@@ -10,7 +10,7 @@ metadata:
     containerImage: quay.io/artemiscloud_scratch/activemq-artemis-operator:0.15.0
     createdAt: 2020-06-08T10:12:16Z
     capabilities: Seamless Upgrades
-    repository: https://github.com/rh-messaging/activemq-artemis-operator
+    repository: https://github.com/artemiscloud/activemq-artemis-operator
     support: Red Hat
     tectonic-visibility: ocs
     alm-examples: >-
