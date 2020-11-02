@@ -1,0 +1,24 @@
+file:
+  tests/verify/layer/manifests/{{getEnv "OPERATOR"}}.v{{getEnv "OPERATOR_VERSION"}}.clusterserviceversion.yaml:
+    exists: true
+    contains:
+      - {{getEnv "BROKER_IMAGE"}}
+      - 'containerImage: {{getEnv "OPERATOR_IMAGE"}}'
+      - 'operated-by: {{getEnv "OPERATOR"}}.v{{getEnv "OPERATOR_VERSION"}}'
+  tests/verify/layer/manifests/broker_activemqartemis_crd.yaml:
+    exists: true
+    contains:
+      - 'name: activemqartemises.{{getEnv "GROUP"}}'
+      - 'group: {{getEnv "GROUP"}}'
+  tests/verify/layer/manifests/broker_activemqartemisaddress_crd.yaml:
+    exists: true
+    contains:
+      - 'name: activemqartemisaddresses.{{getEnv "GROUP"}}'
+  tests/verify/layer/manifests/broker_activemqartemisscaledown_crd.yaml:
+    exists: true
+    contains:
+      - 'name: activemqartemisscaledowns.{{getEnv "GROUP"}}'
+  tests/verify/layer/metadata/annotations.yaml:
+    exists: true
+    contains:
+      - 'operators.operatorframework.io.bundle.package.v1: {{getEnv "BROKER_NAME"}}'
