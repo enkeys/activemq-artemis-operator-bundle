@@ -1,0 +1,44 @@
+file:
+  tests/verify/layer/manifests/activemq-artemis-operator.v0.15.0.clusterserviceversion.yaml:
+    exists: true
+    contains:
+      - {{getEnv "IMAGE_BROKER"}}
+      - 'containerImage: {{getEnv "IMAGE_OPERATOR"}}'
+      - 'operated-by: {{getEnv "OPERATOR_NAME"}}.v{{getEnv "OPERATOR_VERSION"}}'
+  tests/verify/layer/manifests/broker_activemqartemis_crd.yaml:
+    exists: true
+    contains:
+      - 'name: activemqartemises.{{getEnv "GROUP"}}'
+      - 'group: {{getEnv "GROUP"}}'
+  tests/verify/layer/manifests/broker_activemqartemisaddress_crd.yaml:
+    exists: true
+    contains:
+      - 'name: activemqartemisaddresses.{{getEnv "GROUP"}}'
+  tests/verify/layer/manifests/broker_activemqartemisscaledown_crd.yaml:
+    exists: true
+    contains:
+      - 'name: activemqartemisscaledowns.{{getEnv "GROUP"}}'
+  tests/verify/layer/metadata/annotations.yaml:
+    exists: true
+    contains:
+      - 'operators.operatorframework.io.bundle.package.v1: {{getEnv "BROKER_NAME"}}'
+  tests/verify/image/config.json:
+    exists: true
+    contains:
+      - '"architecture":"{{getEnv "ARCHITECTURE"}}"'
+      - '"com.redhat.component":"{{getEnv "BUNDLE_REDHAT_COMPONENT"}}"'
+      - '"com.redhat.delivery.operator.bundle":"true"'
+      - '"com.redhat.openshift.versions":"{{getEnv "REDHAT_OPENSHIFT_VERSION"}}"'
+      - '"description":"{{getEnv "BUNDLE_DESCRIPTION"}}"'
+      - '"io.k8s.description":"{{getEnv "BUNDLE_K8S_DESCRIPTION"}}"'
+      - '"io.k8s.display-name":"{{getEnv "BUNDLE_K8S_DISPLAY_NAME"}}"'
+      - '"io.openshift.tags":"{{getEnv "BUNDLE_OPENSHIFT_TAGS"}}"'
+      - '"name":"{{getEnv "BUNDLE_NAME"}}"'
+      - '"operators.operatorframework.io.bundle.channel.default.v1":"current"'
+      - '"operators.operatorframework.io.bundle.channels.v1":"current"'
+      - '"operators.operatorframework.io.bundle.manifests.v1":"manifests/"'
+      - '"operators.operatorframework.io.bundle.mediatype.v1":"registry+v1"'
+      - '"operators.operatorframework.io.bundle.metadata.v1":"metadata/"'
+      - '"operators.operatorframework.io.bundle.package.v1":"{{getEnv "BUNDLE_PACKAGE"}}"'
+      - '"summary":"{{getEnv "BUNDLE_SUMMARY"}}"'
+      - '"version":"{{getEnv "BUNDLE_VERSION"}}"'
