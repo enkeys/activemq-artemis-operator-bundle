@@ -22,3 +22,23 @@ file:
     exists: true
     contains:
       - 'operators.operatorframework.io.bundle.package.v1: {{getEnv "BROKER_NAME"}}'
+  tests/verify/image/config.json:
+    exists: true
+    contains:
+      - '"architecture":"{{getEnv "ARCHITECTURE"}}"'
+      - '"com.redhat.component":"{{getEnv "REDHAT_COMPONENT"}}"'
+      - '"com.redhat.delivery.operator.bundle":"true"'
+      - '"com.redhat.openshift.versions":"{{getEnv "REDHAT_OPENSHIFT_VERSION"}}"'
+      - '"description":"{{getEnv "DESCRIPTION"}}"'
+      - '"io.k8s.description":"{{getEnv "K8S_DESCRIPTION"}}"'
+      - '"io.k8s.display-name":"{{getEnv "K8S_DISPLAY_NAME"}}"'
+      - '"io.openshift.tags":"{{getEnv "OPENSHIFT_TAGS"}}"'
+      - '"name":"{{getEnv "NAME"}}"'
+      - '"operators.operatorframework.io.bundle.channel.default.v1":"current"'
+      - '"operators.operatorframework.io.bundle.channels.v1":"current"'
+      - '"operators.operatorframework.io.bundle.manifests.v1":"manifests/"'
+      - '"operators.operatorframework.io.bundle.mediatype.v1":"registry+v1"'
+      - '"operators.operatorframework.io.bundle.metadata.v1":"metadata/"'
+      - '"operators.operatorframework.io.bundle.package.v1":"{{getEnv "BUNDLE_PACKAGE"}}"'
+      - '"summary":"{{getEnv "SUMMARY"}}"'
+      - '"version":"{{getEnv "VERSION"}}"'
