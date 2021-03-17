@@ -1,10 +1,10 @@
 file:
-  tests/verify/layer/manifests/activemq-artemis-operator.v0.15.0.clusterserviceversion.yaml:
+  tests/verify/layer/manifests/{{getEnv "BUNDLE_CLUSTERSERVICEVERSION"}}:
     exists: true
     contains:
       - {{getEnv "IMAGE_BROKER"}}
-      - 'containerImage: {{getEnv "IMAGE_OPERATOR"}}'
-      - 'operated-by: {{getEnv "OPERATOR_NAME"}}.v{{getEnv "OPERATOR_VERSION"}}'
+      # - 'containerImage: {{getEnv "IMAGE_OPERATOR"}}'
+      - 'operated-by: {{getEnv "OPERATOR_NAME"}}.v{{getEnv "OPERATOR_VERSION_FULL"}}'
   tests/verify/layer/manifests/broker_activemqartemis_crd.yaml:
     exists: true
     contains:
@@ -33,7 +33,7 @@ file:
       - '"io.k8s.description":"{{getEnv "BUNDLE_K8S_DESCRIPTION"}}"'
       - '"io.k8s.display-name":"{{getEnv "BUNDLE_K8S_DISPLAY_NAME"}}"'
       - '"io.openshift.tags":"{{getEnv "BUNDLE_OPENSHIFT_TAGS"}}"'
-      - '"name":"{{getEnv "BUNDLE_NAME"}}"'
+      # - '"name":"{{getEnv "BUNDLE_NAME"}}"'
       - '"operators.operatorframework.io.bundle.channel.default.v1":"current"'
       - '"operators.operatorframework.io.bundle.channels.v1":"current"'
       - '"operators.operatorframework.io.bundle.manifests.v1":"manifests/"'
